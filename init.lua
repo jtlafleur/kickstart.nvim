@@ -287,7 +287,7 @@ require('lazy').setup({
   -- Then, because we use the `opts` key (recommended), the configuration runs
   -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -368,7 +368,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -476,7 +476,7 @@ require('lazy').setup({
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
@@ -678,45 +678,39 @@ require('lazy').setup({
             },
           },
         },
-        pylsp = {
-          settings = {
-            pylsp = {
-              plugins = {
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                mccabe = { enabled = false },
-                pylsp_mypy = { enabled = false },
-                pylsp_black = { enabled = false },
-                pylsp_isort = { enabled = false },
-              },
-            },
-          },
-        },
-        -- basedpyright = {
-        --   -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
+        -- pylsp = {
         --   settings = {
-        --     basedpyright = {
-        --       disableOrganizeImports = true, -- Using Ruff's import organizer
-        --       disableLanguageServices = false,
-        --       analysis = {
-        --         ignore = { '*' }, -- Ignore all files for analysis to exclusively use Ruff for linting
-        --         typeCheckingMode = 'off',
-        --         diagnosticMode = 'openFilesOnly', -- Only analyze open files
-        --         useLibraryCodeForTypes = true,
-        --         autoImportCompletions = true, -- whether pyright offers auto-import completions
+        --     pylsp = {
+        --       plugins = {
+        --         pyflakes = { enabled = false },
+        --         pycodestyle = { enabled = false },
+        --         autopep8 = { enabled = false },
+        --         yapf = { enabled = false },
+        --         mccabe = { enabled = false },
+        --         pylsp_mypy = { enabled = false },
+        --         pylsp_black = { enabled = false },
+        --         pylsp_isort = { enabled = false },
         --       },
         --     },
         --   },
         -- },
+        basedpyright = {
+          -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true, -- Using Ruff's import organizer
+              disableLanguageServices = false,
+              analysis = {
+                ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
+                typeCheckingMode = 'off',
+                diagnosticMode = 'openFilesOnly', -- Only analyze open files
+                useLibraryCodeForTypes = true,
+                autoImportCompletions = true,     -- whether pyright offers auto-import completions
+              },
+            },
+          },
+        },
         ruff = {},
-        jsonls = {},
-        sqlls = {},
-        dockerls = {},
-        docker_compose_language_service = {},
-        tailwindcss = {},
-        html = {},
         gopls = {},
         taplo = {}, -- LSP for toml (e.g., for pyproject.toml files)
       }
@@ -736,7 +730,7 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua',    -- Used to format Lua code
         'goimports', -- Used to format Go code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
